@@ -1,0 +1,46 @@
+<h2>Project List</h2>
+<hr>
+
+<!-- main content -->
+<div ng-controller="myLIST">
+
+    <p>Today is {{today | date:'fullDate'}}</p>
+    <p>
+        <label>Enter project name:</label>
+        <input type="text" name="sproject" id="sproject" ng-model="sproject">
+    </p>
+    <p>
+        <input type="radio" name="sort" id="sortactive" ng-model="sort" value="active">Active
+        <input type="radio" name="sort" id="sortdeactive" value="deactive" ng-model="sort">Deactive
+        <input type="radio" name="sort" id="sortall" value="all" ng-model="sort">All
+    </p>
+    <h4>List of Project</h4>
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Active</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="P in ds | filter:sproject |orderBy:sort">
+                <td>{{$index+1}}</td>
+                <td>{{P.id}}</td>
+                <td>{{P.name}}</td>
+                <td>{{P.type}}</td>
+                <td>{{P.active}}</td>
+                <td>{{P.deactive}}</td>
+                <td>
+                    <button type="button" class="btn btn-success" ng-click="remove(P.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+</div>
