@@ -1,0 +1,23 @@
+<!-- main content -->
+<div ng-controller="myLIST">
+
+    <p>Today is {{today | date:'fullDate'}}</p>
+    <h4>Menu</h4>
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="F in ds">
+                <td>{{F.id}}</td>
+                <td>{{F.name}}</td>
+                <td>{{F.price}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
