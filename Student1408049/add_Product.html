@@ -1,0 +1,48 @@
+<style>
+    .error {
+        color: red;
+    }
+
+    input.ng-invalid {
+        border: red thin solid;
+    }
+
+    input.ng-valid {
+        border: gray thin solid;
+    }
+</style>
+
+<div class="container" ng-controller="myADD">
+    <h4>Add New Product</h4>
+    <hr>
+
+    <form name="formProduct" ng-submit="addProduct()">
+
+        <div class="form-group">
+            <label>ID</label>
+            <input type="text" class="form-control" id="ProductID" name="ProductID" ng-model="ID" placeholder="Enter ID product"
+                required>
+            <span class="error" ng-show="formProduct.ProductID.$error.required">ID cannot be blank</span>
+
+        <div class="form-group">
+            <label>Product Name</label>
+            <input type="text" class="form-control" id="ProductName" name="ProductName" ng-model="name" placeholder="Enter product name" required>
+            <span class="error" ng-show="formProduct.ProductName.$error.required">Product name cannot be blank</span>
+        </div>
+
+        <div class="form-group">
+            <label>Category</label>
+            <input type="text" class="form-control" id="category" name="category" ng-model="category" placeholder="Enter Category" required>
+            <span class="error" ng-show="formProduct.ProductName.$error.required">Category product cannot be blank</span>
+        </div>
+
+        <div class="form-group">
+            <label>Price</label>
+            <input type="number" class="form-control" id="price" name="price" ng-model="price" placeholder="Enter product of price" required>
+            <span class="error" ng-show="formProduct.price.$error.required">Price product cannot be blank.</span>
+        </div>
+
+        <button type="submit" class="btn btn-info" ng-disabled="formProduct.$invalid">Save</button>
+
+    </form>
+</div>

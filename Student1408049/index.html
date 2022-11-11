@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Product</title>
+
+    <!-- link bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- 1. nhung link angularjs framework -->
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/angular-route.min.js"></script>
+    <style>
+        .table {
+            border: double skyblue;
+        }
+
+        .bor {
+            border: double red;
+            padding: 3px;
+            width: 90%;
+
+        }
+
+        .new {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        nav ul {
+            list-style-type: none;
+        }
+
+        nav ul>li {
+            display: inline-block;
+            text-align: center;
+        }
+
+        li>a {
+            text-decoration: none;
+            display: block;
+            width: 300px;
+            background-color: white;
+            color: gray;
+            padding: 5px;
+            font-weight: bold;
+            transition: 2s;
+
+        }
+
+        li>a:hover {
+            background-color: skyblue;
+            height: 50px;
+
+        }
+
+        footer {
+            text-align: center;
+            font-weight: bold;
+        }
+        p{
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body ng-app="myAPP">
+    <div class="container-fluid">
+
+        <br>
+        <!-- main content -->
+
+        <div ng-controller="mainCTR">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <ul>
+                    <li><a href="#/!" class="new">Home</a></li>
+                    <li><a href="#!About" class="new">About us</a></li>
+                    <li><a href="#!product" class="new">List Products</a></li>
+                    <li><a href="#!Contact" class="new">Contact</a></li>
+                    <li><a href="#!add" class="new">Add New Product</a></li>
+                </ul>
+            </nav>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <!-- khoi hien thi cac trang muon link -->
+                    <div ng-view></div>
+                </div>
+
+            </div>
+
+            <script>
+                let app = angular.module("myAPP", ["ngRoute"]);
+                app.config(function ($routeProvider) {
+                    $routeProvider
+                        .when("/", {
+                            templateUrl: "list_Product.html"
+                        })
+                        .when("/product", {
+                            templateUrl: "list_Product.html"
+                        })
+                        .when("/add", {
+                            templateUrl: "add_Product.html"
+                        })
+                        .when("/About", {
+
+                        });
+                });
+
+
+                app.run(function ($rootScope, $http) {
+                    $rootScope.ds = [];
+                    $http.get("products.json").then(function (r) {
+                        $rootScope.ds = r.data.data_products;
+                    }
+                    );
+                });
+
+                app.controller("mainCTR", function ($scope) {
+
+                });
+
+                app.controller("myADD", function ($scope) {
+
+                    $scope.addProduct = function () {
+
+                        let P = {
+                            "name": $scope.name,
+                            "category": $scope.category,
+                            "price": $scope.price,
+                            "action": $scope.action
+                        };
+
+
+                        $scope.ds.push(P);
+
+
+                        alert("The Product is added to list successfully.")
+
+                    }
+                });
+
+                app.controller("myLIST", function ($scope, $http) {
+                    $scope.remove = function (id) {
+
+                        if (confirm("Are u sure ?")) {
+                            let index = -1;
+
+                            $scope.ds.forEach((P, i) => {
+                                if (P.id == id) {
+                                    console.log("found !");
+                                    index = i;
+                                }
+                            });
+
+                            if (index >= 0) {
+                                $scope.ds.splice(index, 1);
+                            }
+                        }
+
+                    }
+                });
+            </script>
+</body>
+<footer>
+    Copyright 2022 by Aptech - All rights reserved
+</footer>
+</html>

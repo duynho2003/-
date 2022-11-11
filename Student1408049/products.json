@@ -1,0 +1,9 @@
+{
+    "data_products":[
+        {"name": "White dress", "category": "Dresses", "price":"700"},
+        {"name": "Pink dress", "category": "Dresses", "price":"200"},
+        {"name": "Rose dress", "category": "Dresses", "price":"300"},
+        {"name": "Gold ring", "category": "Accessories", "price":"320"},
+        {"name": "Pink lipstick", "category": "Accessories", "price":"540"}
+    ]
+}
