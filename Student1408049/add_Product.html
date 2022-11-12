@@ -38,7 +38,7 @@
 
         <div class="form-group">
             <label>Price</label>
-            <input type="number" class="form-control" id="price" name="price" ng-model="price" placeholder="Enter product of price" required>
+            <input type="number" class="form-control" id="price" name="price" ng-model="price" min="0" placeholder="Enter product of price" required>
             <span class="error" ng-show="formProduct.price.$error.required">Price product cannot be blank.</span>
         </div>
 

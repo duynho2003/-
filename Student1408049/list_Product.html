@@ -16,7 +16,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="P in ds | filter:sproduct |orderBy:sort">
-                <td>{{$index+1}}</td>
+                <td>{{P.id}}</td>
                 <td>{{P.name}}</td>
                 <td>{{P.category}}</td>
                 <td>{{P.price}}</td>

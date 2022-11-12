@@ -92,7 +92,6 @@
                     <!-- khoi hien thi cac trang muon link -->
                     <div ng-view></div>
                 </div>
-
             </div>
 
             <script>
@@ -131,6 +130,7 @@
                     $scope.addProduct = function () {
 
                         let P = {
+                            "id": $scope.ID,
                             "name": $scope.name,
                             "category": $scope.category,
                             "price": $scope.price,
@@ -149,7 +149,7 @@
                 app.controller("myLIST", function ($scope, $http) {
                     $scope.remove = function (id) {
 
-                        if (confirm("Are u sure ?")) {
+                        if (confirm("Are you sure want to delete this?")) {
                             let index = -1;
 
                             $scope.ds.forEach((P, i) => {

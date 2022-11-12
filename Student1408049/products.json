@@ -1,9 +1,9 @@
 {
     "data_products":[
-        {"name": "White dress", "category": "Dresses", "price":"700"},
-        {"name": "Pink dress", "category": "Dresses", "price":"200"},
-        {"name": "Rose dress", "category": "Dresses", "price":"300"},
-        {"name": "Gold ring", "category": "Accessories", "price":"320"},
-        {"name": "Pink lipstick", "category": "Accessories", "price":"540"}
+        {"id":"1", "name": "White dress", "category": "Dresses", "price":"700"},
+        {"id":"2", "name": "Pink dress", "category": "Dresses", "price":"200"},
+        {"id":"3", "name": "Rose dress", "category": "Dresses", "price":"300"},
+        {"id":"4", "name": "Gold ring", "category": "Accessories", "price":"320"},
+        {"id":"5", "name": "Pink lipstick", "category": "Accessories", "price":"540"}
     ]
 }
